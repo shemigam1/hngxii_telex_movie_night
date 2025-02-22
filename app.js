@@ -64,7 +64,16 @@ async function fetchExternalData() {
 
         const data = res.data.results
         const returnData = formatData(data)
-        console.log("Fetched Data:", returnData);
+        const message = `it's Movie Night! Here's a list of popular movies: \n${returnData.join('\n')}`;
+        axios.post('https://api.telex.im/v1/webhooks/01952b0a-718b-70d4-a5d7-16989f054326', {
+            message: message,
+            username: "Movie Night",
+            event_name: "Logger",
+            status: "success",
+            data: returnData
+        });
+
+        // console.log("Fetched Data:", returnData);
     } catch (error) {
         console.error("Error fetching data:", error.message);
     }
@@ -74,7 +83,7 @@ async function fetchExternalData() {
 cron.schedule('* * * * *', fetchExternalData);
 
 app.post('/tick', (req, res) => {
-    const data = fetchExternalData();
+    fetchExternalData();
     res.status(202).json({ status: "accepted" });
 });
 
