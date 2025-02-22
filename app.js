@@ -2,10 +2,11 @@ import express from 'express';
 import axios from 'axios';
 import bodyParser from 'body-parser';
 import cron from 'node-cron';
-import { configDotenv } from 'dotenv';
+import dotenv from 'dotenv';
 import { formatData } from './utils.js';
 import cors from 'cors';
 
+dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -53,7 +54,7 @@ async function fetchExternalData() {
             // method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MGViZTIxMGE4NDAxYjRmZmJkOTMwMTY4NGUwZmZhNiIsIm5iZiI6MTczMDQ3NTQ3Mi45NDksInN1YiI6IjY3MjRmNWQwMDFjNGRiZmE5NGY2OGZlYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9Au69kWK40fUkj73Oq5dsa7lJdZ0PIbMW0omIuGm8fg'
+                Authorization: `Bearer ${process.env.MOVIE_API_KEY}`
             }
         };
         // console.log("Fetching Data...");
