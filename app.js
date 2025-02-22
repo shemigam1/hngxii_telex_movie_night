@@ -30,7 +30,7 @@ app.get('/integration.json', (req, res) => {
                 app_logo: "https://i.imgur.com/lZqvffp.png",
                 background_color: "#fff"
             },
-            integration_category: "Logging",
+            integration_category: "Monitoring and Logging",
             integration_type: "interval",
             is_active: true,
             output: [],
