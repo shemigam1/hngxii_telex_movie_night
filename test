@@ -1,0 +1,8 @@
+#!/bin/bash
+
+curl --location 'http://localhost:4000/tick' \
+--header 'Content-Type: application/json' \
+--data '{
+    "channel_id": "01952b0a-718b-70d4-a5d7-16989f054326",
+    "return_url": "https://ping.telex.im/v1/webhooks/01952b0a-718b-70d4-a5d7-16989f054326",
+}'
