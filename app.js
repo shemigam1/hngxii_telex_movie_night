@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.send('Telex integration is up and active!'));
+app.get('/', (req, res) => res.json({ message: 'Telex integration is up and active!' }));
 
 
 app.get('/integration.json', (req, res) => {
