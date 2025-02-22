@@ -79,8 +79,8 @@ async function fetchExternalData() {
     }
 }
 
-// cron.schedule('0 18 * * *', fetchExternalData);
-cron.schedule('* * * * *', fetchExternalData);
+cron.schedule('0 18 * * *', fetchExternalData);
+// cron.schedule('* * * * *', fetchExternalData);
 
 app.post('/tick', (req, res) => {
     fetchExternalData();
